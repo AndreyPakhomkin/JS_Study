@@ -14,23 +14,19 @@ console.log(str3.repeat(3));
 //3
 let str4  = "Давай проверим, будет ли тут слово, которое ты ищешь";
 console.log("Наша строка:", str4);
-if (str4.indexOf("тут") > -1) {
-    console.log("Слово 'тут' найдено по индексу", str4.indexOf("тут")) 
-}
-    else 
-    {console.log("Слово 'тут' не найдено")};
+let keyw = [ "тут", "код", "ты ищешь"];
+for (let i = 0; i < keyw.length; i ++)
+{
+    if (str4.indexOf(keyw[i]) > -1)
+    {
+        console.log(`Слово ${keyw[i]} найдено по индексу`, str4.indexOf(keyw[i]));
+    }
+        else
+        {
+            console.log(`Слово ${keyw[i]} не найдено`);
 
-if (str4.indexOf("код") > -1) {
-    console.log("Слово 'код' найдено по индексу", str4.indexOf("код"))
+        }
 }
-    else 
-    {console.log("Слово 'код' не найдено")};
-
-if (str4.indexOf("ты ищешь") > -1) {
-    console.log("Слова 'ты ищешь' найдены по индексу", str4.indexOf("ты ищешь"))
-}
-    else 
-    {console.log("Слова 'ты ищешь' не найдены")};
 
 //4
 let str5 = "Нельзя так просто взять и начать писать код";
@@ -44,13 +40,13 @@ console.log(" Привет, меня зовут", name1, "\n", "Мне", age, "�
 //6
 let arr1 = ["лес", "медведь", "машина", "пердеж", "лес", "ковер"];
 
-if (str4.indexOf("олень") > -1) {
+if (arr1.indexOf("олень") > -1) {
     console.log("Слово 'олень' входит в массив") 
 }
     else 
     {console.log("Слово 'олень' не входит в массив")};
 
-if (str4.indexOf("медведь") > -1) {
+if (arr1.indexOf("медведь") > -1) {
     console.log("Слово 'медведь' входит в массив")
 }
     else 
@@ -74,20 +70,15 @@ console.log(arr1);
 
 let mid = arr1.length / 2; // Решил реализовать поиск середины
 
-console.log(mid, typeof mid);
-
-if (mid % 2 == 0){
-    mid = mid;
-    console.log(mid, typeof mid);
-    arr1.splice(mid, 0, "листья");
-    console.log(arr1);
-}
-else {
+if (mid % 2 == 0)
+{
     mid = Math.floor(mid + 1);
-    console.log(mid, typeof mid);
-    arr1.splice(mid, 0, "листья");
-    console.log(arr1);
 }
+arr1.splice(mid, 0, "листья");
+console.log(arr1);
+
+arr1[arr1.indexOf("ковер")] = "отдых";
+console.log(arr1);
 
 //7
 let str6 = "Нельзя так просто взять и начать писать код";
@@ -107,19 +98,19 @@ console.log(str6);
 //arr3.sort( (a, b) => (a - b));
 //console.log(arr3);
 
-//8.3 full  inverted usual func
+//8.3 full inverted usual func
 let arr5 = [5,9,9,1,6,-5,-4,-8,1,8,3,7,0,89,56];
 function Compare(a, b) {
     if (a<b) { return -1}
-    if (a==b) { return 0}
-    if (a>b) { return 1}
+        else if (a==b) { return 0}
+            else if (a>b) { return 1}
 }
 arr5.sort(Compare);
 console.log(arr5);
 function invCompare(a, b) {
     if (a<b) { return 1}
-    if (a==b) { return 0}
-    if (a>b) { return -1}
+        else if (a==b) { return 0}
+            else if (a>b) { return -1}
 }
 arr5.sort(invCompare);
 console.log(arr5);

@@ -42,7 +42,6 @@ function SGeron(){
 
 let mystr = 'w3resource';
 function StringFlip(){
-    console.log(mystr.length);
     // удаляю послений символ и вставляю его в начало строки
     for (let i = 0; i < mystr.length; i++){ //вхожу в цикл для переставления символа на каждой итерации
         let caseW = mystr[mystr.length-1]; //беру последний символ

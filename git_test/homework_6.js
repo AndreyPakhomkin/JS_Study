@@ -43,7 +43,7 @@ function make_pairs(){
         var cash = [key, storage[key]];
         nested_arr[0].push(cash);//Пуш пары ключ-значение в новый массив
     }
-console.log(nested_arr[0]);
+alert(nested_arr);
 }
 
 /*let arrr = [[]];

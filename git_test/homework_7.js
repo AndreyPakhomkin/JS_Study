@@ -42,7 +42,6 @@ let start_obj_1 = {
 Check_empty(start_obj_1);
 
 function Check_empty(){
-    console.log(Object.values(start_obj_1));
     //Проверка на наличие ключей
     let resKeys = (Object.keys(start_obj_1).length === 0) ? true : false;
     

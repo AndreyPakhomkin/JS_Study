@@ -22,6 +22,7 @@ function compare(obj_1, obj_2) {
   return result
   */
 }
+
 /* Избегание мутации оригинального объекта путем копирования в отдельное место в памяти
 const object_1 = {
   a : true,

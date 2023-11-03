@@ -374,19 +374,125 @@ const first = () => console.log("first");
 const second = () => console.log("second");
 const third = () => console.log("third");
 
-first(); //1
-second(); //2
-third(); //3
+// first(); //1
+// second(); //2
+// third(); //3
 
-first(); //1 Добавляет в колстек, выполняет, удаляет из колстека
+// first(); //1 Добавляет в колстек, выполняет, удаляет из колстека
 
-setTimeout(second, 0); //3 Видит таймаут, отправляет задачу на внеш апи, удаляет из колстека
+// setTimeout(second, 0); //3 Видит таймаут, отправляет задачу на внеш апи, удаляет из колстека
 
-third(); //2 Добавляет в колстек, выполняет, удаляет из колстека
+// third(); //2 Добавляет в колстек, выполняет, удаляет из колстека
 //Тем временем, апи видит нулевой таймаут и добавляет second в callbackQueue-очередь
 //Когда колстек пустеет, инветлуп закидывает в него second из callbackQueue
 //Second исполняется и удаляется из колстека
 
-setTimeout(first, 3000);
-setTimeout(second, 2000);
-setTimeout(third, 1000);
+// setTimeout(first, 3000);
+// setTimeout(second, 2000);
+// setTimeout(third, 1000);
+
+// const aaa = {
+//   a: 2,
+// };
+
+// const bbb = {
+//   a: bbb,
+// };
+
+// a.__proto__ = b;
+
+console.clear();
+
+//clousurs - замыкания - когда функция имеет доступ к переменным из вышестоящего скоупа
+//________________________________________
+function sayHiTo(name) {
+  const message = "Hi " + name;
+  return function () {
+    //эта функция использует переменную message из вышестоящего скоупа
+    console.log(message);
+  };
+}
+
+function frameWorks() {
+  const hw = ["Angular", "React", "Vue"]; //записываю локальную переменную
+  return {
+    //возвращаю объект с методами взаимодействия с локальной перем-ной
+    print: function () {
+      console.log(hw.join(" "));
+    },
+    add: function (framework) {
+      hw.push(framework);
+    },
+  };
+}
+
+const manager1 = frameWorks(); //записываю функцию в глобал перем-ю для доступа к методам
+// manager.print();
+// manager.add("Baza");
+// manager.print();
+
+//Функция консол.лог и счетчик вызовов
+
+// function hiMark() {
+//   let score = 0;
+//   return {
+//     scoreUp: function () {
+//       hiMark.score = score++;
+//     },
+//   };
+// }
+
+// const test = hiMark();
+// console.log(hiMark.scoreUp());
+
+// const logger = getLogger(abab);
+
+// function getLogger(func) {
+//   let score = 0;
+//   return function () {
+//     score++;
+//     console.log(score);
+//     func();
+//   };
+// }
+
+// logger();
+// logger();
+// logger();
+
+// //Прикрутить гетлоггер к любой функции
+
+// const funAaa = abab;
+
+// function abab() {
+//   console.log("abab worked:");
+// }
+
+//Мемоизировать ф факториала
+function factorial(n) {
+  let res = 1;
+  for (i = 1; i <= n; i++) {
+    res = res * i;
+  }
+  return res;
+}
+
+const memorizedFactorial = memorize(factorial); //тут лежит результат ф memorize
+
+function memorize(func) {
+  let mem = {};
+  return function (n) {
+    if (mem[n]) {
+      console.log("беру из кэша!!!!!!");
+      return mem[n];
+    } else {
+      console.log("не беру из кэша!!!!!!");
+      let res = func(n);
+      mem[n] = res;
+      return res;
+    }
+  };
+}
+
+memorizedFactorial(2943000000);
+memorizedFactorial(2943000000);

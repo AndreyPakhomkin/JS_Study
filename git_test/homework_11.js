@@ -51,61 +51,91 @@
 //5 Сравнить два объекта между собой
 
 //
-function anagram(wordOne, wordTwo) {
-  //1
-  wordOne = wordOne.toLowerCase();
-  wordTwo = wordTwo.toLowerCase();
-  //2
-  wordOne = wordOne.replace(/[^a-zA-Z]+/g, "");
-  wordTwo = wordTwo.replace(/[^a-zA-Z]+/g, "");
-  //3
-  wordOne = wordOne.split("");
-  wordTwo = wordTwo.split("");
-  //4 Посчитать кол-во для каждой буквы в массиве и записать {букву : кол-во}
-  let objOne = makeObj(wordOne);
-  let objTwo = makeObj(wordTwo);
+// function anagram(wordOne, wordTwo) {
+//   //1
+//   wordOne = wordOne.toLowerCase();
+//   wordTwo = wordTwo.toLowerCase();
+//   //2
+//   wordOne = wordOne.replace(/[^a-zA-Z]+/g, "");
+//   wordTwo = wordTwo.replace(/[^a-zA-Z]+/g, "");
+//   //3
+//   wordOne = wordOne.split("");
+//   wordTwo = wordTwo.split("");
+//   //4 Посчитать кол-во для каждой буквы в массиве и записать {букву : кол-во}
+//   let objOne = makeObj(wordOne);
+//   let objTwo = makeObj(wordTwo);
 
-  console.log(JSON.stringify(objOne));
-  console.log(JSON.stringify(objTwo));
-  //5 Сравнить полученные объекты
-  let res = compare(objOne, objTwo);
-  console.log(res);
-}
+//   console.log(JSON.stringify(objOne));
+//   console.log(JSON.stringify(objTwo));
+//   //5 Сравнить полученные объекты
+//   let res = compare(objOne, objTwo);
+//   console.log(res);
+// }
 
-function makeObj(word) {
-  let localObj = {};
+// function makeObj(word) {
+//   let localObj = {};
+//   let count = 0;
+//   //Беру букву из массива
+//   for (let i = 0; i < word.length; i++) {
+//     //Ищу повторения этой буквы
+//     for (let j = 0; j < word.length; j++) {
+//       if (word[i] === word[j]) {
+//         count = count + 1; //Увеличиваю счетчик повторений если такие есть
+//         localObj[word[i]] = count; //Вставляю в объект по ключу "буква" св-во "счетчик"
+//       }
+//     }
+//     count = 0; //Обнуляю счетчик для новой буквы
+//   }
+//   return localObj;
+// }
+
+// function compare(obj1, obj2) {
+//   //Сравниваю длину массивов из ключей полученных объектов(если не равны, false)
+//   if (Object.keys(obj1).length !== Object.keys(obj2).length) {
+//     return false;
+//   }
+//   //Захожу в первый объект
+//   for (let key in obj1) {
+//     //Сравниваю свойства по такому же ключу во втором объекте
+//     if (obj1[key] !== obj2[key]) {
+//       return false;
+//     }
+//   }
+//   //Если обе проверки пройдены, объекты равны, т.е. два слова - анаграммы
+//   return true;
+// }
+
+// const wOne = "iF!!Firiendi";
+// const wTwo = "FiriieiFn@!@d";
+
+// anagram(wOne, wTwo);
+
+//#4 Поиск гласных
+// function findVowels(string) {
+//   const vowels = ["a", "e", "i", "o", "u"]; //Перечисляю гласные
+//   let count = 0; //Инициализирую счетчик
+//   for (let char of string.toLowerCase()) {
+//     //Беру по одному символу из строки
+//     if (vowels.includes(char)) {
+//       //Проверяю, есть ли такой символ в массиве гласных
+//       count++;
+//     }
+//   }
+//   console.log(count);
+// }
+
+// const foundVoweles = findVowels("hElloiuiuiuiui");
+
+//#5 Фибоначчи
+function Fibo(n) {
+  //Задаю первые 2 числа
+  const fib = [0, 1];
+  //объявляю счетчик новых значений
   let count = 0;
-  //Беру букву из массива
-  for (let i = 0; i < word.length; i++) {
-    //Ищу повторения этой буквы
-    for (let j = 0; j < word.length; j++) {
-      if (word[i] === word[j]) {
-        count = count + 1; //Увеличиваю счетчик повторений если такие есть
-        localObj[word[i]] = count; //Вставляю в объект по ключу "буква" св-во "счетчик"
-      }
-    }
-    count = 0; //Обнуляю счетчик для новой буквы
+  //захожу в цикл от 3 числа до числа n
+  for (let i = 2; i <= n; i++) {
+    fib.push(fib[i - 1] + fib[i - 2]);
   }
-  return localObj;
+  console.log(fib[n - 1]);
 }
-
-function compare(obj1, obj2) {
-  //Сравниваю длину массивов из ключей полученных объектов(если не равны, false)
-  if (Object.keys(obj1).length !== Object.keys(obj2).length) {
-    return false;
-  }
-  //Захожу в первый объект
-  for (let key in obj1) {
-    //Сравниваю свойства по такому же ключу во втором объекте
-    if (obj1[key] !== obj2[key]) {
-      return false;
-    }
-  }
-  //Если обе проверки пройдены, объекты равны, т.е. два слова - анаграммы
-  return true;
-}
-
-const wOne = "iF!!Firiendi";
-const wTwo = "FiriieiFn@!@d";
-
-anagram(wOne, wTwo);
+const fibonacci = Fibo(3);
